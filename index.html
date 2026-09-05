@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maze Walker</title>
+
+    <style>
+
+    @font-face {
+        font-family: "vazir";
+        src: url("http://imthesadra.github.io/static/fonts/vzir.ttf");
+    }
+
+    * {
+        box-sizing: border-box;
+        font-family: "vazir", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background:
+            radial-gradient(
+                circle at 20% 20%,
+                #b68cff 0%,
+                transparent 35%
+            ),
+            radial-gradient(
+                circle at 80% 80%,
+                #45d9d0 0%,
+                transparent 35%
+            ),
+            #75658f;
+
+        color: #302840;
+        font-family: Arial, sans-serif;
+    }
+
+    .player {
+        width: min(90vw, 650px);
+        padding: 20px;
+
+        background: rgba(238, 235, 245, 0.78);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 26px;
+
+        box-shadow:
+            0 25px 70px rgba(55, 35, 85, 0.35),
+            inset 0 1px rgba(255, 255, 255, 0.6);
+    }
+
+    .canvas-container {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+
+        overflow: hidden;
+        border-radius: 19px;
+
+        background: #51466b;
+
+        box-shadow:
+            inset 0 0 30px rgba(35, 20, 55, 0.25),
+            0 8px 25px rgba(55, 35, 85, 0.2);
+    }
+
+    .canvas-container canvas {
+        display: block;
+
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    .info {
+        padding: 18px 5px 8px;
+    }
+
+    .title {
+        font-size: 25px;
+        font-weight: 700;
+
+        color: #423252;
+
+        margin-bottom: 5px;
+    }
+
+    .subtitle {
+        color: #687b83;
+        font-size: 14px;
+    }
+
+    .controls {
+        display: flex;
+        gap: 12px;
+        margin-top: 20px;
+    }
+
+    .controls button {
+        flex: 1;
+        padding: 15px;
+
+        border: none;
+        border-radius: 15px;
+
+        color: white;
+
+        font-size: 15px;
+        font-weight: bold;
+        letter-spacing: 1px;
+
+        cursor: pointer;
+
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+    #start-button {
+        background: linear-gradient(
+            100deg,
+            #a66cff,
+            #35cfc7
+        );
+
+        box-shadow:
+            0 8px 20px rgba(105, 70, 180, 0.3);
+    }
+
+    #reset-button {
+        background: linear-gradient(
+            100deg,
+            #7d6b94,
+            #5e91a0
+        );
+
+        box-shadow:
+            0 8px 20px rgba(75, 75, 120, 0.25);
+    }
+
+    #start-button:hover,
+    #reset-button:hover {
+        transform: translateY(-2px);
+    }
+
+    #start-button:hover {
+        box-shadow:
+            0 12px 28px rgba(105, 70, 180, 0.4);
+    }
+
+    #reset-button:hover {
+        box-shadow:
+            0 12px 28px rgba(75, 75, 120, 0.35);
+    }
+
+    #start-button:active,
+    #reset-button:active {
+        transform: translateY(1px);
+    }
+    </style>
+</head>
+
+<body>
+
+    <main class="player">
+
+        <div id="canvas-container" class="canvas-container"></div>
+
+        <div class="info">
+            <div class="title">Maze Walker</div>
+            <div class="subtitle">Find the path from start to finish</div>
+        </div>
+
+        <div class="controls">
+            <button id="start-button">START</button>
+            <button id="reset-button">RESET</button>
+        </div>
+
+    </main>
+
+    <script src="./generator.js"></script>
+    <script src="https://imthesadra.github.io/static/p5.js"></script>
+    <script src="./main.js"></script>
+
+</body>
+</html>
